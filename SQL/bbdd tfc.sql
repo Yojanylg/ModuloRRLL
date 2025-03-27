@@ -17,7 +17,7 @@ create table empleado (
     INDEX(id),
     INDEX(dni),
     INDEX(email),
-    FOREIGN KEY (id_jefe) REFERENCES empleado(id)
+    FOREIGN KEY (id_jefe) REFERENCES empleado(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE tipo_permiso (
@@ -33,10 +33,12 @@ create table permisos (
 	id int auto_increment primary key,
     id_empleado int,
     id_permiso int,
+    fecha_inicio Date,
+    fecha_fin Date,
     duracion int(5),
     aprobado boolean default false,
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id),
-    FOREIGN KEY (id_permiso) REFERENCES tipo_permiso(id)
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY (id_permiso) REFERENCES tipo_permiso(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 create table registro (
@@ -44,5 +46,5 @@ create table registro (
     id_empleado int,
     fecha_inicio DateTime not null,
     fecha_fin DateTime not null,
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id)
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
