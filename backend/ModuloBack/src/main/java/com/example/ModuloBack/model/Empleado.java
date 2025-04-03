@@ -41,6 +41,9 @@ public class Empleado implements Serializable {
     private String email;
 
     @Column
+    private String password;//añadir a la base de datos!!!!!!!!!!!!!!!
+
+    @Column
     private String direccion;
 
     @Column(name = "fecha_alta")
@@ -68,12 +71,13 @@ public class Empleado implements Serializable {
     //CONSTRUCTOR SIN ID
 
 
-    public Empleado(String nombre, String apellido1, String apellido2, String dni, String email, String direccion, LocalDate fechaAlta, LocalDate fechaBaja, int idJefe, List<Permiso> permisos, List<Registro> registros, Empleado jefe, List<Empleado> subordinados) {
+    public Empleado(String nombre, String apellido1, String apellido2, String dni, String email, String password, String direccion, LocalDate fechaAlta, LocalDate fechaBaja, int idJefe, List<Permiso> permisos, List<Registro> registros, Empleado jefe, List<Empleado> subordinados) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.dni = dni;
         this.email = email;
+        this.password = password;
         this.direccion = direccion;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
