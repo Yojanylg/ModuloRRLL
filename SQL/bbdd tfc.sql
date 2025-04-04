@@ -9,6 +9,7 @@ create table empleado (
     apellido_2 varchar(50),
     dni varchar(9) UNIQUE NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
+	upassword varchar(50) NOT NULL,
     direccion varchar(100),
     fecha_alta Date NOT NULL,
     fecha_baja Date,
