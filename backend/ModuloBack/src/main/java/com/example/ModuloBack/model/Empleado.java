@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -41,19 +40,16 @@ public class Empleado implements Serializable {
     private String email;
 
     @Column
-    private String password;//añadir a la base de datos!!!!!!!!!!!!!!!
+    private String upassword;
 
     @Column
     private String direccion;
 
     @Column(name = "fecha_alta")
-    private LocalDate fechaAlta;
+    private Date fechaAlta;
 
     @Column(name = "fecha_baja")
-    private LocalDate fechaBaja;
-
-    @Column(name = "id_jefe")
-    private int idJefe;
+    private Date fechaBaja;
 
     @OneToMany(mappedBy = "empleado", fetch = FetchType.EAGER)
     private List<Permiso> permisos;
@@ -65,27 +61,22 @@ public class Empleado implements Serializable {
     @JoinColumn(name = "id_jefe")
     private Empleado jefe;
 
-    @OneToMany(mappedBy = "jefe", fetch = FetchType.EAGER)
-    private List<Empleado> subordinados;
+   // @OneToMany(mappedBy = "jefe", fetch = FetchType.EAGER)
+   // private List<Empleado> subordinados;
 
     //CONSTRUCTOR SIN ID
 
-
-    public Empleado(String nombre, String apellido1, String apellido2, String dni, String email, String password, String direccion, LocalDate fechaAlta, LocalDate fechaBaja, int idJefe, List<Permiso> permisos, List<Registro> registros, Empleado jefe, List<Empleado> subordinados) {
+    public Empleado(String nombre, String apellido1, String apellido2, String dni, String email, String password, String direccion, Date fechaAlta, Date fechaBaja, Empleado jefe) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.dni = dni;
         this.email = email;
-        this.password = password;
+        this.upassword = password;
         this.direccion = direccion;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
-        this.idJefe = idJefe;
-        this.permisos = permisos;
-        this.registros = registros;
         this.jefe = jefe;
-        this.subordinados = subordinados;
     }
 }
 

@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService{
         }
 
         // Comparar la contraseña encriptada con la proporcionada
-        if (!passwordEncoder.matches(password, empleado.get().getPassword())) {
+        if (!passwordEncoder.matches(password, empleado.get().getUpassword())) {
             return "Contraseña incorrecta";
         }
 
