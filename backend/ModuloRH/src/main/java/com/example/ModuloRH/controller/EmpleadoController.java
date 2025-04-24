@@ -25,6 +25,7 @@ public class EmpleadoController {
 
     // Devuelve los datos de un empleado para mostrarlos en el front
 
+    @CrossOrigin(origins = "*")
     @GetMapping("one")
     public ResponseEntity<Empleado> getEmpleado(@RequestParam int id){
         return new ResponseEntity<>(empleadoService.getById(id), HttpStatus.OK);
